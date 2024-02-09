@@ -2,8 +2,6 @@ package dev.kush.productcategory.service.impl;
 
 import dev.kush.productcategory.exception.ItemNotFoundException;
 import dev.kush.productcategory.model.Category;
-import dev.kush.productcategory.model.CategoryName;
-import dev.kush.productcategory.model.Product;
 import dev.kush.productcategory.repository.CategoryRepository;
 import dev.kush.productcategory.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +32,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category createCategory(Category category) {
+    public Category saveCategory(Category category) {
         return categoryRepository.save(category);
     }
 
@@ -46,8 +44,5 @@ public class CategoryServiceImpl implements CategoryService {
         return category;
     }
 
-    @Override
-    public List<Product> findProductsByCategoryName(CategoryName categoryName) {
-        return categoryRepository.findProductsByCategoryName(categoryName);
-    }
+
 }

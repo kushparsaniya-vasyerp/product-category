@@ -1,11 +1,14 @@
 package dev.kush.productcategory.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+
+import static jakarta.persistence.CascadeType.ALL;
 
 @Entity
 @Getter
@@ -16,20 +19,12 @@ public class Category {
     @Id  @GeneratedValue
     private Long categoryId;
 
-    @Enumerated(EnumType.STRING)
-    private CategoryName categoryName;
+    private String categoryName;
     private String description;
 
-    @OneToMany(mappedBy = "category")
-    private List<Product> products;
 
-    public Category(CategoryName categoryName, String description, List<Product> products) {
-        this.categoryName = categoryName;
-        this.description = description;
-        this.products = products;
-    }
 
-    public Category(CategoryName categoryName, String description) {
+    public Category(String categoryName, String description) {
         this.categoryName = categoryName;
         this.description = description;
     }
