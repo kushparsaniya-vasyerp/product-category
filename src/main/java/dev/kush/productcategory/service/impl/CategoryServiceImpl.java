@@ -1,5 +1,6 @@
 package dev.kush.productcategory.service.impl;
 
+import dev.kush.productcategory.exception.ItemNotFoundException;
 import dev.kush.productcategory.model.Category;
 import dev.kush.productcategory.model.CategoryName;
 import dev.kush.productcategory.model.Product;
@@ -28,7 +29,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     private Category findCategoryById(Long categoryId) {
         return categoryRepository.findById(categoryId).orElseThrow(
-                () -> new RuntimeException("Category not found with id: " + categoryId)
+                () -> new ItemNotFoundException("Category not found with id: " + categoryId)
         );
     }
 

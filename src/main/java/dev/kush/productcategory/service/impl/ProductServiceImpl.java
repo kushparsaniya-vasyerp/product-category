@@ -1,5 +1,6 @@
 package dev.kush.productcategory.service.impl;
 
+import dev.kush.productcategory.exception.ItemNotFoundException;
 import dev.kush.productcategory.model.Product;
 import dev.kush.productcategory.repository.ProductRepository;
 import dev.kush.productcategory.service.ProductService;
@@ -27,7 +28,7 @@ public class ProductServiceImpl implements ProductService {
 
     private Product findProductById(Long productId) {
         return productRepository.findById(productId).orElseThrow(
-                () -> new RuntimeException("Product not found")
+                () -> new ItemNotFoundException("Product not found")
         );
     }
 
